@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %} Movie Recommender {% endblock %}
+{% block body %}
+    <form action='/' method="post">
+        <h1>What movie have you seen?</h1>
+        <input type="text" class="input_movie" name="input_movie" autofocus minlength="1"/>
+        <button type="submit">Search</button>
+    </form>
+    {% if data %} <h1>BROOO YOU HAVE WATCHED {{data}}</h1>
+        {% else %} Please enter some text into input.
+    {% endif %}
+{% endblock %}
