@@ -9,7 +9,7 @@ import sparql_request
 def main_page():  # put application's code here
     if request.method == "POST":
         data = request.form.get('input_movie')
-        return(sparql_request.results_dict)
+        return (sparql_request.movies)
         return render_template("index.html", data=data)
     return render_template("index.html")
 

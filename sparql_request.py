@@ -7,12 +7,16 @@ SELECT ?title ?overview WHERE {
 	?movie a :Movie;
   		:overview ?overview;
   		:title ?title.
-}"""
+}
+LIMIT 15
+"""
 sparql = SPARQLWrapper(server_address)
 sparql.setQuery(query)
 sparql.setReturnFormat(JSON)
 results_dict = sparql.query().convert()
-
+movies = {}
+for movie in results_dict["results"]["bindings"]:
+    movies[movie["title"]["value"]] = movie["overview"]["value"]
 
 if __name__ == "__main__":
     for result in results_dict['results']['bindings']:
