@@ -1,12 +1,19 @@
 {% extends "layout.html" %}
 {% block title %} Movie Recommender {% endblock %}
+{% block style %}<link rel="stylesheet" href="../static/style.css"}> {% endblock %}
 {% block body %}
     <form action='/' method="post">
         <h1>What movie have you seen?</h1>
         <input type="text" class="input_movie" name="input_movie" autofocus minlength="1"/>
         <button type="submit">Search</button>
     </form>
-    {% if data %} <h1>BROOO YOU HAVE WATCHED {{data}}</h1>
+    {% if data %} <h1>Select please what are you searching for:</h1>
         {% else %} Please enter some text into input.
     {% endif %}
+    <ul>
+    {% for title in movies %}
+        <li><button class="film" id="{{ title[1] }}">{{ title[1] }}</button></li>
+    {% endfor %}
+    </ul>
+    <script src="../static/script.js"></script>
 {% endblock %}

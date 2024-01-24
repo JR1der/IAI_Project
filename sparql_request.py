@@ -8,7 +8,6 @@ SELECT ?title ?overview WHERE {
   		:overview ?overview;
   		:title ?title.
 }
-LIMIT 15
 """
 sparql = SPARQLWrapper(server_address)
 sparql.setQuery(query)
