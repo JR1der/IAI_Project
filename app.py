@@ -25,7 +25,7 @@ def main_page():  # put application's code here
             matches = Searcher().search_words(given_film, list(sparql_request.movies.keys()), max_operations=5)
             return redirect('/')
         else:
-            return redirect('/r')
+            return redirect('/')
     else:
         print(found_movies)
         return render_template("index.html", given_film=given_film, movies=matches, found_movies=found_movies)
@@ -40,7 +40,7 @@ def film_select(film):
     if request.method == "POST":
         print(film)
         found_movies = nlp_search_movies.search_movie(film, sparql_request.movies)
-        return redirect('/')
+    return redirect('/')
 
 
 if __name__ == '__main__':
