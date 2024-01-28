@@ -7,7 +7,7 @@
         <input type="text" class="input_movie" name="input_movie" autofocus minlength="1"/>
         <button type="submit">Search</button>
     </form>
-    {% if data %} <h1>Select please what are you searching for:</h1>
+    {% if given_film %} <h1>Select please what are you searching for:</h1>
         {% else %} Please enter some text into input.
     {% endif %}
     <ul>
@@ -15,5 +15,8 @@
         <li><button class="film" id="{{ title[1] }}">{{ title[1] }}</button></li>
     {% endfor %}
     </ul>
+    {% for movie in found_movies %}
+        <h3>{{ movie }}</h3>
+    {% endfor %}
     <script src="../static/script.js"></script>
 {% endblock %}

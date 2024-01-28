@@ -18,6 +18,8 @@ def euclidean_distance(vector1, vector2):
     return distance
 
 
+
+
 def search_movie(movie_selected, dict_movies):
     movie_overview = vectorize_text(dict_movies[movie_selected])
     answer_movies = []
@@ -25,6 +27,5 @@ def search_movie(movie_selected, dict_movies):
         cur_overview = vectorize_text(dict_movies[movie])
         dist = euclidean_distance(movie_overview, cur_overview)
         answer_movies.append((dist, movie))
-
     answer_movies.sort()
-    print(answer_movies)
+    return [tup[1] for tup in answer_movies][1:10]
