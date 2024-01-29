@@ -15,6 +15,9 @@ app.config['SESSION_FILE_THRESHOLD'] = 100
 app.secret_key = 'hello'
 Session(app)
 
+nlp_search_movies.extract_data()
+
+
 @app.route('/', methods=["POST", "GET"])
 def main_page():  # put application's code here
 
