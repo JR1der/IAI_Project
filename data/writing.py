@@ -1,14 +1,9 @@
+import sparql_request
+from nlp_search_titles import Searcher
 import spacy
 import csv
-import ast
 # Load the spaCy model
 nlp = spacy.load("en_core_web_sm")
-
-
-filepath = "static/formatted_file.csv"
-file = open(filepath)
-type(file)
-
 
 def vectorize_text(text):
     doc = nlp(text)
@@ -27,14 +22,17 @@ def euclidean_distance(vector1, vector2):
 def search_movie(movie_selected, dict_movies):
     movie_overview = vectorize_text(dict_movies[movie_selected])
     answer_movies = []
-    csvreader = csv.reader(file)
-    header = next(csvreader)
-    for movie in csvreader:
-        # cur_overview = vectorize_text(dict_movies[movie])
-        cur_overview = movie[1]
-        cur_overview = ast.literal_eval(cur_overview)
+    for movie in dict_movies:
+        cur_overview = vectorize_text(dict_movies[movie])
+        writer.writerow([movie, cur_overview])
         dist = euclidean_distance(movie_overview, cur_overview)
         answer_movies.append((dist, movie))
     answer_movies.sort()
-    print(answer_movies[0])
-    return [tup[1][0] for tup in answer_movies][1:10]
+    return [tup[1] for tup in answer_movies][1:10]
+
+
+if __name__ == ("__main__"):
+    with open('vectorize.csv', 'w', newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(['title', 'vector'])
+        search_movie("The Avengers", sparql_request.movies)

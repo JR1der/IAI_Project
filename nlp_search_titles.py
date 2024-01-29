@@ -27,4 +27,4 @@ class Searcher:
 
         matches = sorted(matches, key=lambda x: x[0])
 
-        return matches[:6]
+        return matches[:7]
