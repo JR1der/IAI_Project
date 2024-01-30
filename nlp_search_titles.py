@@ -18,7 +18,7 @@ class Searcher:
 
         return dp[m][n]
 
-    def search_words(self, movie_title, movie_list, max_operations=3):
+    def search_words(self, movie_title, movie_list, max_operations=10):
         matches = []
         for target in movie_list:
             distance = self.levenshtein_distance(movie_title, target)
